@@ -1,0 +1,420 @@
+/* Основные переменные из red.json */
+:root {
+  /* Фоновые цвета */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #1f1f1f;
+  
+  /* Акцентные цвета */
+  --accent-primary: #b00000;
+  --accent-hover: #d00000;
+  --accent-light: #ff4d4d;
+  --accent-switch: #cc0000;
+  --accent-switch-hover: #e60000;
+  
+  /* Текст */
+  --text-primary: #ffffff;
+  --text-secondary: #777777;
+  --text-disabled: #777777;
+  
+  /* Дополнительные цвета */
+  --border-color: #555555;
+  --input-bg: #3a3a3a;
+  --toggle-bg: #4a4a4a;
+}
+
+/* Сброс стилей */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Контейнер */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+  flex: 1;
+}
+
+/* Заголовок */
+.header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--accent-primary);
+}
+
+#user-name {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+/* Статус-бар */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bg-secondary);
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item .label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.stat-item .value {
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+#today-bp {
+  color: var(--accent-primary);
+}
+
+#total-bp {
+  color: var(--accent-light);
+}
+
+/* Переключатели */
+.toggles {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.toggle-switch {
+  flex: 1;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  user-select: none;
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--toggle-bg);
+  transition: 0.3s;
+  border-radius: 6px;
+  border: 1px solid #666;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #fff;
+  transition: 0.3s;
+  border-radius: 4px;
+}
+
+.toggle-switch.active .slider {
+  background-color: var(--accent-switch);
+}
+
+.toggle-switch.active .slider:before {
+  transform: translateX(16px);
+  background-color: var(--accent-switch-hover);
+}
+
+.label-text {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+/* Вкладки */
+.tabs {
+  display: flex;
+  background-color: var(--bg-secondary);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.3s;
+  border-right: 1px solid #333;
+}
+
+.tab-btn:last-child {
+  border-right: none;
+}
+
+.tab-btn.active {
+  background-color: var(--accent-primary);
+  color: #fff;
+}
+
+.tab-btn:hover:not(.active) {
+  background-color: var(--toggle-bg);
+  color: var(--text-primary);
+}
+
+/* Контент */
+.content {
+  flex: 1;
+}
+
+/* Онлайн-счётчик */
+.online-counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-secondary);
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.online-counter span {
+  font-weight: bold;
+}
+
+.counter-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.counter-btn {
+  width: 28px;
+  height: 28px;
+  background-color: var(--accent-primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.counter-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.counter-value {
+  min-width: 40px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Список заданий */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-item {
+  background-color: var(--bg-secondary);
+  padding: 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.2s;
+}
+
+.task-item:hover {
+  background-color: #2a2a2a;
+}
+
+.task-item.completed {
+  opacity: 0.6;
+  background-color: #2a3a2a;
+}
+
+.task-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--accent-primary);
+}
+
+.task-info {
+  flex: 1;
+}
+
+.task-name {
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.task-bp {
+  font-size: 11px;
+  color: var(--accent-primary);
+}
+
+.task-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+}
+
+/* Счётчик задания */
+.task-counter {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.task-counter-btn {
+  width: 20px;
+  height: 20px;
+  background-color: var(--toggle-bg);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.task-counter-btn:hover {
+  background-color: var(--accent-primary);
+}
+
+.task-counter-value {
+  min-width: 24px;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Тип задания */
+.task-type {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.task-type.solo {
+  background-color: #334a33;
+  color: #4a7a4a;
+}
+
+.task-type.pair {
+  background-color: #333a4a;
+  color: #4a6a7a;
+}
+
+.task-type.faction {
+  background-color: #4a3333;
+  color: #7a4a4a;
+}
+
+/* Нижняя панель */
+.footer {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #333;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 12px;
+  background-color: var(--accent-primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.action-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.action-btn:active {
+  transform: scale(0.98);
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+  .container {
+    padding: 8px;
+  }
+  
+  .status-bar {
+    padding: 8px;
+  }
+  
+  .task-item {
+    padding: 10px;
+  }
+  
+  .action-btn {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.task-item {
+  animation: fadeIn 0.3s ease-out;
+}
