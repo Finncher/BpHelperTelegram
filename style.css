@@ -1,0 +1,603 @@
+/* Основные переменные из red.json */
+:root {
+  /* Фоновые цвета */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #1f1f1f;
+  
+  /* Акцентные цвета */
+  --accent-primary: #b00000;
+  --accent-hover: #d00000;
+  --accent-light: #ff4d4d;
+  --accent-switch: #cc0000;
+  --accent-switch-hover: #e60000;
+  
+  /* Текст */
+  --text-primary: #ffffff;
+  --text-secondary: #777777;
+  --text-disabled: #777777;
+  
+  /* Дополнительные цвета */
+  --border-color: #555555;
+  --input-bg: #3a3a3a;
+  --toggle-bg: #4a4a4a;
+}
+
+/* Сброс стилей */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Контейнер */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+  flex: 1;
+}
+
+/* Заголовок */
+.header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--accent-primary);
+}
+
+#user-name {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+/* Статус-бар */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bg-secondary);
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item .label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.stat-item .value {
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+#today-bp {
+  color: var(--accent-primary);
+}
+
+#total-bp {
+  color: var(--accent-light);
+}
+
+/* Переключатели */
+.toggles {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.toggle-switch {
+  flex: 1;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  user-select: none;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--toggle-bg);
+  transition: 0.3s;
+  border-radius: 6px;
+  border: 1px solid #666;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #fff;
+  transition: 0.3s;
+  border-radius: 4px;
+}
+
+.toggle-switch input:checked + .slider {
+  background-color: var(--accent-switch);
+}
+
+.toggle-switch input:checked + .slider:before {
+  transform: translateX(16px);
+  background-color: var(--accent-switch-hover);
+}
+
+.label-text {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+/* Онлайн-счётчик */
+.online-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-secondary);
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+.counter-label {
+  color: var(--text-primary);
+  font-weight: bold;
+}
+
+.counter-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.counter-btn {
+  width: 28px;
+  height: 28px;
+  background-color: var(--accent-primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.counter-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.counter-value {
+  min-width: 40px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Вкладки */
+.nav-tabs {
+  display: flex;
+  background-color: var(--bg-secondary);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.nav-tab {
+  flex: 1;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.3s;
+  border-right: 1px solid #333;
+}
+
+.nav-tab:last-child {
+  border-right: none;
+}
+
+.nav-tab.active {
+  background-color: var(--accent-primary);
+  color: #fff;
+}
+
+.nav-tab:hover:not(.active) {
+  background-color: var(--toggle-bg);
+  color: var(--text-primary);
+}
+
+/* Контент */
+.main-content {
+  flex: 1;
+}
+
+.task-section {
+  margin-bottom: 16px;
+}
+
+.task-section h3 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+/* Список заданий */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-item {
+  background-color: var(--bg-secondary);
+  padding: 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.2s;
+}
+
+.task-item:hover {
+  background-color: #2a2a2a;
+}
+
+.task-item.completed {
+  opacity: 0.6;
+  background-color: #2a3a2a;
+}
+
+/* Чекбокс */
+.task-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.task-checkbox-wrapper input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--accent-primary);
+  border-radius: 4px;
+  background-color: var(--bg-primary);
+  transition: 0.2s;
+}
+
+.task-checkbox-wrapper input[type="checkbox"]:checked + .checkbox-custom {
+  background-color: var(--accent-primary);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  background-size: 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.task-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-name {
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.task-bp {
+  font-size: 11px;
+  color: var(--accent-primary);
+}
+
+.task-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+}
+
+/* Счётчик задания */
+.task-counter {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.task-counter-btn {
+  width: 24px;
+  height: 24px;
+  background-color: var(--toggle-bg);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.task-counter-btn:hover {
+  background-color: var(--accent-primary);
+}
+
+.task-counter-value {
+  min-width: 32px;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Таймер кнопка */
+.timer-btn {
+  background-color: var(--toggle-bg);
+  color: var(--text-primary);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.timer-btn:hover {
+  background-color: var(--accent-primary);
+}
+
+/* Тип задания */
+.task-type {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.task-type.solo {
+  background-color: #334a33;
+  color: #4a7a4a;
+}
+
+.task-type.pair {
+  background-color: #333a4a;
+  color: #4a6a7a;
+}
+
+.task-type.faction {
+  background-color: #4a3333;
+  color: #7a4a4a;
+}
+
+/* Таймеры */
+.timer-item {
+  background-color: var(--bg-secondary);
+  padding: 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.timer-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.timer-name {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.timer-duration {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.timer-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.timer-control-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.timer-control-btn.start {
+  background-color: #009a00;
+  color: #fff;
+}
+
+.timer-control-btn.start:hover {
+  background-color: #00cc00;
+}
+
+.timer-control-btn.stop {
+  background-color: #ff6b00;
+  color: #fff;
+}
+
+.timer-control-btn.stop:hover {
+  background-color: #ff8c00;
+}
+
+.timer-control-btn.reset {
+  background-color: var(--toggle-bg);
+  color: var(--text-primary);
+}
+
+.timer-control-btn.reset:hover {
+  background-color: #6a6a6a;
+}
+
+/* Нижняя панель */
+.bottom-controls {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #333;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--accent-primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-secondary {
+  background-color: var(--toggle-bg);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: #5a5a5a;
+}
+
+/* Таймер оверлей */
+.timer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.timer-overlay.hidden {
+  display: none;
+}
+
+.timer-content {
+  background-color: var(--bg-secondary);
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+.timer-content h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.timer-display {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--accent-primary);
+  margin-bottom: 24px;
+  font-family: 'Consolas', monospace;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+  .container {
+    padding: 8px;
+  }
+  
+  .stats {
+    padding: 8px;
+  }
+  
+  .task-item {
+    padding: 10px;
+  }
+  
+  .btn {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.task-item {
+  animation: fadeIn 0.3s ease-out;
+}
